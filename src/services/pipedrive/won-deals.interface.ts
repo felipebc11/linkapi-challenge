@@ -1,4 +1,4 @@
 export interface WonDeals {
   title: string;
-  data: string;
+  date: string;
 }

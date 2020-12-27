@@ -26,7 +26,7 @@ export class PipedriveService {
     wonDeals.map((deal: any) => {
       clearedWonDeals.push({
         title: deal['title'],
-        data: deal['close_time']
+        date: deal['close_time']
       });
     });
     return clearedWonDeals;
