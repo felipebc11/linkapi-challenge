@@ -24,7 +24,7 @@ export class PipedriveService {
 
   private clearWonDeals(wonDeals: any[]): WonDeals[] {
     const clearedWonDeals: WonDeals[] = [];
-    wonDeals.map((deal: any) => {
+    wonDeals.forEach((deal: any) => {
       const wonTime = deal['first_won_time'].split(' ')[0];
       clearedWonDeals.push({
         title: deal['title'],

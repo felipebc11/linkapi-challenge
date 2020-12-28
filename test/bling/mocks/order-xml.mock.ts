@@ -1,11 +1,8 @@
-import utf8 from 'utf8';
-
-export const generateOrderXML = (name: string, date: string) =>
-  utf8.encode(`
+export const orderMock = `
 <?xml version="1.0" encoding="UTF-8"?>
 <pedido>
    <cliente>
-      <nome>${name} - ${date}</nome>
+      <nome>Felipe - 2020-12-28</nome>
       <tipoPessoa>J</tipoPessoa>
       <endereco>Rua Visconde de Sao Gabriel</endereco>
       <cpf_cnpj>00000000000000</cpf_cnpj>
@@ -89,4 +86,4 @@ export const generateOrderXML = (name: string, date: string) =>
    <obs>Testando o campo observacoes do pedido</obs>
    <obs_internas>Testando o campo observacoes internas do pedido</obs_internas>
 </pedido>
-`);
+`;
