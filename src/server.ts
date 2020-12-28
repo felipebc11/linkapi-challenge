@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import { validateEnv } from './utils/validateEnv';
 import { App } from './app';
-import { MainController } from './api-routes/main.controller';
+import { ReportController } from './api-routes/report.controller';
 
 validateEnv();
 
-const app = new App([new MainController()]);
+const app = new App([new ReportController()]);
 
 app.listen();
