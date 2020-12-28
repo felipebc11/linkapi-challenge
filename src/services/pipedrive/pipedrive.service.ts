@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { WonDeals } from './won-deals.interface';
 
 export class PipedriveService {
@@ -24,9 +25,11 @@ export class PipedriveService {
   private clearWonDeals(wonDeals: any[]): WonDeals[] {
     const clearedWonDeals: WonDeals[] = [];
     wonDeals.map((deal: any) => {
+      const wonTime = deal['first_won_time'].split(' ')[0];
       clearedWonDeals.push({
         title: deal['title'],
-        date: deal['close_time']
+        date: wonTime,
+        salesValue: deal['value']
       });
     });
     return clearedWonDeals;
