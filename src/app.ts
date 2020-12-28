@@ -6,6 +6,10 @@ import mongoose from 'mongoose';
 import Compression from 'compression';
 import { Controller } from './interfaces/controller.interface';
 
+import { CronJob } from 'cron';
+import { PipedriveService } from './services/pipedrive/pipedrive.service';
+import { BlingService } from './services/bling/bling.service';
+
 export class App {
   public app: express.Application;
 
@@ -15,6 +19,7 @@ export class App {
     this.connectToTheDatabase();
     this.initatilizeMiddlewares();
     this.initatilizeControllers(controllers);
+    this.initializeCronRoutine();
   }
 
   public listen() {
@@ -37,11 +42,28 @@ export class App {
     });
   }
 
+  private initializeCronRoutine() {
+    const pipedriveService = new PipedriveService();
+    const blingService = new BlingService();
+    const job = new CronJob(
+      '1 * * * * *',
+      async () => {
+        console.log('running cron routine');
+        const wonDeals = await pipedriveService.getWonDeals();
+        await blingService.createOrders(wonDeals);
+      },
+      null,
+      true,
+      'America/Sao_Paulo'
+    );
+  }
+
   private connectToTheDatabase() {
     const MONGO_URI = process.env.MONGO_URI;
     mongoose.connect(`${MONGO_URI}`, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useFindAndModify: false
     });
   }
 }
