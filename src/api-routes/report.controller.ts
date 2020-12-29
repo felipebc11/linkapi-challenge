@@ -1,4 +1,6 @@
 import express from 'express';
+import passport from 'passport';
+
 import { Report } from '../report/report';
 
 export class ReportController {
@@ -10,8 +12,12 @@ export class ReportController {
     this.initializeRoutes();
   }
 
-  public initializeRoutes() {
-    this.router.get(this.path, this.getAll);
+  public initializeRoutes(): void {
+    this.router.get(
+      this.path,
+      passport.authenticate('jwt', { session: false }),
+      this.getAll
+    );
   }
 
   private getAll = async (

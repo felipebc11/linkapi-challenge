@@ -4,11 +4,12 @@ import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
 import Compression from 'compression';
-import { Controller } from './interfaces/controller.interface';
-
 import { CronJob } from 'cron';
+
+import { Controller } from './interfaces/controller.interface';
 import { PipedriveService } from './services/pipedrive/pipedrive.service';
 import { BlingService } from './services/bling/bling.service';
+import './auth/auth';
 
 export class App {
   public app: express.Application;
@@ -22,7 +23,7 @@ export class App {
     this.initializeCronRoutine();
   }
 
-  public listen() {
+  public listen(): void {
     this.app.listen(process.env.PORT, () => {
       console.log(`App listening on the port ${process.env.PORT}`);
     });
@@ -45,7 +46,7 @@ export class App {
   private initializeCronRoutine() {
     const pipedriveService = new PipedriveService();
     const blingService = new BlingService();
-    const job = new CronJob(
+    const cronJob = new CronJob(
       '1 * * * * *',
       async () => {
         console.log('running cron routine');
@@ -63,7 +64,8 @@ export class App {
     mongoose.connect(`${MONGO_URI}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useFindAndModify: false
+      useFindAndModify: false,
+      useCreateIndex: true
     });
   }
 }
