@@ -13,9 +13,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier-format && npm run lint",
-      "pre-push": "",
-      "...": "..."
+      "pre-commit": "yarn prettier-format && yarn lint",
+      "pre-push": "yarn test"
     }
   },
   "author": "Felipe Bastos",
