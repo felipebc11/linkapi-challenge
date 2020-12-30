@@ -10,7 +10,7 @@ Para começar, execute o comando abaixo, assim instalando as depedências necess
 $ yarn install
 ```
 
-## Principais comandos
+### Principais comandos
 
 ```sh
 $ yarn start:dev
@@ -41,7 +41,7 @@ Para registar um novo usuário e envie um JSON semelhante a:
 ```
 
 Execute uma requisição do tipo POST para: `http://localhost:8080/user/login`
-Para realizar o login preencha o mesmo campos e envie um JSON semelhante a:
+Para realizar o login preencha com os mesmos campos e envie um JSON semelhante a:
 
 ```json
 {
