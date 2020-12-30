@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  application:
+    container_name: express-mongo
+    restart: always
+    build: ./
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/app
+    environment:
+      PORT: 8080
+      MONGO_URI: mongodb://mongo:27017/expressmongo
+      PIPEDRIVE_API_ENDPOINT: https://api.pipedrive.com/v1
+      API_TOKEN_PIPEDRIVE: 9a09ca5d88e3c65ee54e1928dbb8c0e1743b4cd1
+      BLING_API_ENDPOINT: https://bling.com.br/Api/v2/pedido/json
+      BLING_API_API_KEY: 95eb74c2e03a706a0b8a665f6c3d592a878ed2d9ed5e190399e26aae85c0748e9f42330f
+      JWT_SECRET: 'secretKey'
+    links:
+      - mongo
+
+  mongo:
+    container_name: mongo
+    image: mongo:4.2.8
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+      - mongodb_config:/data/configdb
+
+volumes:
+  mongodb:
+  mongodb_config:

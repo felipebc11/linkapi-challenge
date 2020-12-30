@@ -5,6 +5,7 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start:dev": "nodemon",
+    "start": "node src/server.js",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "eslint . --ext .ts",
     "test": "jest",
