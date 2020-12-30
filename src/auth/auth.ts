@@ -8,6 +8,7 @@ import { UserModel } from '../database/models/user/user.model';
 const localStrategy = passportLocal.Strategy;
 const JWTStrategy = passportJwt.Strategy;
 const ExtractJWT = passportJwt.ExtractJwt;
+const JWTSecret = process.env.JWT_SECRET;
 
 passport.use(
   'signup',
@@ -58,7 +59,7 @@ passport.use(
 passport.use(
   new JWTStrategy(
     {
-      secretOrKey: 'JWT_SECRET',
+      secretOrKey: JWTSecret,
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
     },
     async (token, done) => {

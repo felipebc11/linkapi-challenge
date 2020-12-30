@@ -24,7 +24,12 @@ export class ReportController {
     request: express.Request,
     response: express.Response
   ) => {
-    const report = await this.report.fetchReport();
-    response.send(report);
+    try {
+      const report = await this.report.fetchReport();
+      response.send(report);
+    } catch (error) {
+      console.log('Database error', error);
+      return response.status(403).send({ error: 'request failed' });
+    }
   };
 }

@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 export class UserController {
   public path = '/user';
   public router = express.Router();
+  private JWTSecret = process.env.JWT_SECRET;
 
   constructor() {
     this.initializeRoutes();
@@ -38,7 +39,7 @@ export class UserController {
               .send({ error: 'authentication failed' });
 
           const body = { _id: user._id, email: user.email };
-          const token = jwt.sign({ user: body }, 'JWT_SECRET');
+          const token = jwt.sign({ user: body }, this.JWTSecret as string);
 
           return response.json({ token });
         });

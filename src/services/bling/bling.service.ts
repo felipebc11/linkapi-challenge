@@ -45,7 +45,7 @@ export class BlingService {
         }
       );
     } catch (error) {
-      console.log(error);
+      console.log('Failed in update orders report');
     }
   }
 }
