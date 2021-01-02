@@ -4,6 +4,10 @@
 
 ### Sem utilização do Docker:
 
+#### Pré-requisitos
+
+Configure os arquivos presentes na pasta src/config para poder executar a aplicação.
+
 Para começar, execute o comando abaixo, assim instalando as depedências necessárias no seu ambiente de execução.
 
 ```sh
@@ -23,10 +27,6 @@ Para começar, execute o comando abaixo, assim instalando as depedências necess
 ```sh
 $ docker-compose up
 ```
-
-## Pré-requisitos
-
-Configure os arquivos presentes na pasta src/config para poder executar a aplicação.
 
 ## Utilização
 
