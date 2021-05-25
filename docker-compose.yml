@@ -13,9 +13,9 @@ services:
       PORT: 8080
       MONGO_URI: mongodb://mongo:27017/expressmongo
       PIPEDRIVE_API_ENDPOINT: https://api.pipedrive.com/v1
-      API_TOKEN_PIPEDRIVE: 9a09ca5d88e3c65ee54e1928dbb8c0e1743b4cd1
+      API_TOKEN_PIPEDRIVE: <insert-api-key>
       BLING_API_ENDPOINT: https://bling.com.br/Api/v2/pedido/json
-      BLING_API_API_KEY: 95eb74c2e03a706a0b8a665f6c3d592a878ed2d9ed5e190399e26aae85c0748e9f42330f
+      BLING_API_API_KEY: <insert-api-key>
       JWT_SECRET: 'secretKey'
     links:
       - mongo
